@@ -15,10 +15,26 @@ function App() {
 
     const uuid = v4();
 
-    setData([...mockData, {id:uuid,name:'therList5',todoList:'123'}])
+    //delete
+    const todoUuid1 = v4();
+    const todoUuid2 = v4();
+    const todoUuid3 = v4();
+
+    setData([...mockData, {id:uuid,name:'todoGuy',todoList:
+    [
+      [todoUuid1,'buyMilk', false],
+      [todoUuid2,'buyCoffee', false],
+      [todoUuid3,'buyFruits', false],
+    ]
+  }
+  ])
     console.log(mockData);
 
-    localStorage.setItem('list', JSON.stringify([...mockData, {id:uuid,name:'anotherList5',todoList:'123'}]))
+    localStorage.setItem('list', JSON.stringify([...mockData, {id:uuid,name:'todoGuy',todoList: [
+      [todoUuid1,'buyMilk', false],
+      [todoUuid2,'buyCoffee', false],
+      [todoUuid3,'buyFruits', false],
+    ]}]))
 
 
   }
@@ -59,7 +75,10 @@ function App() {
 
   function openNode(note){
 
-    setNote((x)=>note);
+    if(note){
+      setNote((x)=>note);
+    }
+
     setPage('note');
 
   }
@@ -88,12 +107,12 @@ function App() {
 
     {console.log('was rendered')}
 
-    <button id ='add' onClick = {createNewNode}>+ Add</button>
+    <button id ='add' onClick = {openNode}>+ Add</button>
 
 
     {currentPage==='list'?
 
-  <List   mockData = {mockData}
+    <List mockData = {mockData}
           openNode = {openNode}
           deleteNode = {deleteNode}
     />   :

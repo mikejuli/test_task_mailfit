@@ -1,39 +1,42 @@
 import {useState, useEffect} from 'react'
+import TodoList from './TodoList'
 
 const Note = (props) => {
 
  const [noteData, setNoteData] = useState();
+ const [nameValue, setNameValue] = useState('')
 
   useEffect(()=>{ setNoteData((x)=>props.note)  },[])
 
+  useEffect(()=>{setNameValue(props.note.name)},[props.note.name])
+
+
 
   const onFormSubmit = (e) => {
-
-    e.preventDefault();
-      console.log(e);
+    //if noteData is undefined use createNode otherwise ->
+    console.log(e);
     props.changeNode(
-      {id: props.note.id, name: `${e.target[0].value}`, todoList: '!!!!!!'})
+      {id: props.note.id, name: `${e.target[0].value}`, todoList: props.note.todoList})
 
+      e.preventDefault();
   }
 
 
   return (
-    <div>
+    <div style = {{position: 'relative', left: '40%', width: '200px', lenght: '200px', backgroundColor: 'grey'}}>
 
     From Note
-    <div>{props.note.name}</div><div>{props.note.todoList}</div>
+    <div>{nameValue}</div>
 
-<form onSubmit = {onFormSubmit}>
-<input type = 'text'/>
+<form onSubmit = {onFormSubmit} >
+<input type = 'text' value = {nameValue} onChange = { (e) => { console.log(e.target.value); setNameValue(e.target.value)  } } />
 
 <button type = 'submit'>Submit</button>
 </form>
 
+<TodoList todoList = {props.note.todoList}/>
 
-<button onClick = {()=>{props.changeNode(
-{id: props.note.id, name: 'anotherList5', todoList: '!!!!!!'})}}>changeNode</button>
-
-<button id = 'save' onClick = {()=>{ props.backToTheList() }}>Save</button>
+<button id = 'save' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
 
     </div>
 
