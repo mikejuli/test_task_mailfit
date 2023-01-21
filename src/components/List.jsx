@@ -12,15 +12,14 @@ const List = (props) => {
 
 <div>
 
-<button id ='add' onClick = {props.createNewNode}>+ Add</button>
 
 
 </div>
 
-{props.mockData.map((x)=><div id = 'item' style = {{margin: '20px',backgroundColor:'aqua', width: '150px', height: '100px'}} onClick = {(e)=>{ e.target.clicked = true; console.log(e)}}><div>{x.name}</div><div>{x.todoList}</div>
+{props.mockData.map((x)=><div id = 'item' style = {{margin: '20px',backgroundColor:'aqua', width: '150px', height: '100px'}} ><div>{x.name}</div><div>{x.todoList}</div>
 
 <div id = 'showButtons'>
-<div id ='add' style = {{backgroundColor: 'red'}} onClick = {()=>{props.changeNode(x)}}>Change</div>
+<div id ='add' style = {{backgroundColor: 'red'}} onClick = {()=>{props.openNode(x)}}>Change</div>
 <button id ='delete'onClick = {()=>{props.deleteNode(x.id)}}>Delete</button>
 </div>
 

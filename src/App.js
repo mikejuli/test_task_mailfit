@@ -40,11 +40,37 @@ function App() {
 
   }
 
-  function changeNode(noteObj){
-        console.log(noteObj);
-        setNote((x)=>noteObj);
-        setPage('note');
+  function changeNode(updatedNode){
+
+    let changedIndex;
+
+    mockData.forEach((x,index)=>{ if(x.id===updatedNode.id) { changedIndex = index; console.log(changedIndex, x.id) } })
+
+    if(changedIndex!==undefined){
+    var s = [...mockData]
+    s[changedIndex] = updatedNode;
+     setData([...s])
+
+     localStorage.setItem('list', JSON.stringify([...s]))
+
   }
+
+  }
+
+  function openNode(note){
+
+    setNote((x)=>note);
+    setPage('note');
+
+  }
+
+  function backToTheList(){
+
+
+    setPage('list');
+
+  }
+
 
 
 
@@ -62,16 +88,22 @@ function App() {
 
     {console.log('was rendered')}
 
+    <button id ='add' onClick = {createNewNode}>+ Add</button>
+
 
     {currentPage==='list'?
 
   <List   mockData = {mockData}
-          createNewNode = {createNewNode}
-          changeNode = {changeNode}
+          openNode = {openNode}
           deleteNode = {deleteNode}
     />   :
 
-    <Note note = {note}/>
+    <Note note = {note}
+          backToTheList = {backToTheList}
+          changeNode = {changeNode}
+
+
+    />
 
   }
 
