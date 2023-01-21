@@ -1,37 +1,54 @@
 import './App.css';
 import {useState, useEffect} from 'react';
+import {v4} from 'uuid';
+import Note from './components/Note'
+import List from './components/List'
 function App() {
 
   //mock data
 
   const [mockData,setData] = useState([]);
+  const [currentPage, setPage] = useState('list')
+  const [note, setNote] = useState(0)
 
+  function createNewNode(name,todoList){
 
-  function createNewNode(){
-    setData([...mockData, {id:5,name:'anotherList5',todoList:'123'}])
+    const uuid = v4();
+
+    setData([...mockData, {id:uuid,name:'therList5',todoList:'123'}])
     console.log(mockData);
 
-    localStorage.setItem('list', JSON.stringify([...mockData, {id:5,name:'anotherList5',todoList:'123'}]))
+    localStorage.setItem('list', JSON.stringify([...mockData, {id:uuid,name:'anotherList5',todoList:'123'}]))
+
+
   }
 
   function deleteNode(id){
 
     let deletedId;
 
-    mockData.forEach((x,index)=>{ if(x.id===id) { deletedId = index } })
+    mockData.forEach((x,index)=>{ if(x.id===id) { deletedId = index; console.log(deletedId, x.id, id) } })
 
-    if(deletedId){
+    if(deletedId!==undefined){
       var s = mockData.splice(deletedId,1);
      setData([...mockData])
+
+     localStorage.setItem('list', JSON.stringify([...mockData]))
+
   }
     console.log(s, mockData)
+
+  }
+
+  function changeNode(noteObj){
+        console.log(noteObj);
+        setNote((x)=>noteObj);
+        setPage('note');
   }
 
 
 
   useEffect(()=>{
-
-    // localStorage.setItem('list', JSON.stringify([{id: 1, name: 'get to groceries', todoList: 'do smth'},{id: 2, name: 'go to the store', todoList: 'do smth'}]) )
 
     const items = JSON.parse(localStorage.getItem('list'))
 
@@ -44,10 +61,21 @@ function App() {
     <div className="App">
 
     {console.log('was rendered')}
-  {mockData.map((x)=><div>{x.name}{x.todoList}</div>)}
 
-    <button id ='add' onClick = {createNewNode}>Create</button>
-    <button id ='add'onClick = {()=>{deleteNode(5)}}>Delete</button>
+
+    {currentPage==='list'?
+
+  <List   mockData = {mockData}
+          createNewNode = {createNewNode}
+          changeNode = {changeNode}
+          deleteNode = {deleteNode}
+    />   :
+
+    <Note note = {note}/>
+
+  }
+
+
 
     </div>
   );
