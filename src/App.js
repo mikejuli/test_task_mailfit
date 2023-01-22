@@ -11,31 +11,26 @@ function App() {
   const [currentPage, setPage] = useState('list')
   const [note, setNote] = useState(0)
 
-  function createNewNode(name,todoList){
+  function createNewNode(updatedNode){
+
+
 
     const uuid = v4();
 
+    const newNode = {id:uuid,name:updatedNode.name,todoList:updatedNode.todoList
+    }
     //delete
-    const todoUuid1 = v4();
-    const todoUuid2 = v4();
-    const todoUuid3 = v4();
-
-    setData([...mockData, {id:uuid,name:'todoGuy',todoList:
-    [
-      [todoUuid1,'buyMilk', false],
-      [todoUuid2,'buyCoffee', false],
-      [todoUuid3,'buyFruits', false],
-    ]
-  }
+    // const todoUuid1 = v4();
+    // const todoUuid2 = v4();
+    // const todoUuid3 = v4();
+    console.log(updatedNode);
+    setData([...mockData, newNode
   ])
     console.log(mockData);
 
-    localStorage.setItem('list', JSON.stringify([...mockData, {id:uuid,name:'todoGuy',todoList: [
-      [todoUuid1,'buyMilk', false],
-      [todoUuid2,'buyCoffee', false],
-      [todoUuid3,'buyFruits', false],
-    ]}]))
+    localStorage.setItem('list', JSON.stringify([...mockData, newNode]))
 
+    setNote((x)=>newNode)
 
   }
 
@@ -56,7 +51,17 @@ function App() {
 
   }
 
+  //action with note
   function changeNode(updatedNode){
+
+    if(updatedNode.id === undefined){
+      console.log(updatedNode);
+      createNewNode(updatedNode);
+
+
+
+    } else {
+
 
     let changedIndex;
 
@@ -70,13 +75,20 @@ function App() {
      localStorage.setItem('list', JSON.stringify([...s]))
 
   }
+    }
 
   }
 
   function openNode(note){
 
+    if(!note){note = undefined}
+
+    console.log(note);
+
     if(note){
       setNote((x)=>note);
+    }else {
+      setNote({ id:undefined,name:'',todoList: []});
     }
 
     setPage('note');
@@ -107,15 +119,17 @@ function App() {
 
     {console.log('was rendered')}
 
-    <button id ='add' onClick = {openNode}>+ Add</button>
 
 
     {currentPage==='list'?
-
+    <div>
+    <button id ='add' onClick = {()=>{openNode()}}>+ Add</button>
     <List mockData = {mockData}
           openNode = {openNode}
           deleteNode = {deleteNode}
-    />   :
+    />
+    </div>
+       :
 
     <Note note = {note}
           backToTheList = {backToTheList}

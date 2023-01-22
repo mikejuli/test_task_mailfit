@@ -8,12 +8,13 @@ const Note = (props) => {
 
   useEffect(()=>{ setNoteData((x)=>props.note)  },[])
 
-  useEffect(()=>{setNameValue(props.note.name)},[props.note.name])
+ // useEffect(()=>{setNameValue(props.note.name)},[props.note.name])
+  useEffect(()=>{setNameValue(()=>props.note.name?props.note.name:'new note')},[props.note.name])
 
 
 
   const onFormSubmit = (e) => {
-    //if noteData is undefined use createNode otherwise ->
+
     console.log(e);
     props.changeNode(
       {id: props.note.id, name: `${e.target[0].value}`, todoList: props.note.todoList})
@@ -34,7 +35,7 @@ const Note = (props) => {
 <button type = 'submit'>Submit</button>
 </form>
 
-<TodoList todoList = {props.note.todoList}/>
+<TodoList note = {props.note} changeNode = {props.changeNode}/>
 
 <button id = 'save' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
 
