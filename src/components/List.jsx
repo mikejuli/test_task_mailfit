@@ -16,7 +16,7 @@ const List = (props) => {
 
 </div>
 
-{props.mockData.map((x,index)=><div id = 'item' key = {index} style = {{margin: '20px',backgroundColor:'aqua', width: '150px', height: '100px'}} ><div>{x.name}</div><div>{x.todoList.map((x,index)=><div key = {index}>{x[1]}</div>)}</div>
+  {props.mockData.map((x,index)=><div id = 'item' key = {index} style = {{margin: '20px',backgroundColor:'aqua', width: '150px', height: '100px'}} ><div>{x.name}</div><div>{x.todoList.map((x,index)=><div key = {index}>{x[2] ? '✅' : '⬜' }{x[1]}</div>)}</div>
 
 <div id = 'showButtons'>
 <div id ='add' style = {{backgroundColor: 'red'}} onClick = {()=>{props.openNode(x)}}>Change</div>

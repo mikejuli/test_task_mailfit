@@ -23,7 +23,7 @@ function App() {
     // const todoUuid1 = v4();
     // const todoUuid2 = v4();
     // const todoUuid3 = v4();
-    console.log(updatedNode);
+    console.log(newNode);
     setData([...mockData, newNode
   ])
     console.log(mockData);
@@ -54,7 +54,7 @@ function App() {
   //action with note
   function changeNode(updatedNode){
 
-    if(updatedNode.id === undefined){
+    if(updatedNode.id === null){
       console.log(updatedNode);
       createNewNode(updatedNode);
 
@@ -62,7 +62,7 @@ function App() {
 
     } else {
 
-
+      console.log(updatedNode);
     let changedIndex;
 
     mockData.forEach((x,index)=>{ if(x.id===updatedNode.id) { changedIndex = index; console.log(changedIndex, x.id) } })
@@ -81,14 +81,14 @@ function App() {
 
   function openNode(note){
 
-    if(!note){note = undefined}
+    if(!note){note = null}
 
     console.log(note);
 
     if(note){
       setNote((x)=>note);
     }else {
-      setNote({ id:undefined,name:'',todoList: []});
+      setNote({ id:null,name:'new node',todoList: []});
     }
 
     setPage('note');
@@ -101,7 +101,6 @@ function App() {
     setPage('list');
 
   }
-
 
 
 
