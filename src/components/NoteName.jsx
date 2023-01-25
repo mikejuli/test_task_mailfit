@@ -27,17 +27,13 @@ return (
 
   <div>
 
-From Note
-  {toggleNameValue? <div style = {{fontSize: '30px'}}>{nameValue}<button onClick={()=>{ setToggleNameValue(!toggleNameValue)}}>✍️</button></div> :
+  {toggleNameValue? <div>{nameValue}<button onClick={()=>{ setToggleNameValue(!toggleNameValue)}}>✍️</button></div> :
 
   <form onSubmit = {onFormSubmit} >
-<input type = 'text' value = {nameValue} onChange = { (e) => { console.log(e.target.value); setNameValue(e.target.value)  } } />
+    <input type = 'text' value = {nameValue} onChange = { (e) => { console.log(e.target.value); setNameValue(e.target.value)  } } />
 
-<button type = 'submit'>✍️</button>
-</form>}
-
-
-
+    <button type = 'submit'>✍️</button>
+  </form>}
 
   </div>
 

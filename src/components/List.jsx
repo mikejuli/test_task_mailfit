@@ -8,25 +8,43 @@ const List = (props) => {
   return (
     <div>
 
-   List
-    <div style = {{position: 'absolute', width: '600px',height:'auto',backgroundColor: 'grey', left: '10%'}}>
+<div id = 'toDoList'>
+  <div id ='title'> DAILY TO DO LIST </div>
+    <div id = 'listItems' >
 
-<div>
+  {props.mockData.map((x,index)=>
 
+      <div id = 'item' key = {index} >
+        <div id = 'itemNameWrap'>
+          <div id ='itemName'>
+            {x.name}
+          </div>
+        </div>
+        <div id = 'todoNote'>{x.todoList.slice(0, 3).map((x,index)=>
+          <div id = 'todoSingeNote' key = {index}>
+            <div id = 'todoSingeNoteItem'>{x[2] ? '✅ ' : '⬜ ' }</div>
+            <div id = 'todoSingeNoteItem'>{x[1]}</div>
+          </div>)}
+          {x.todoList.length>3?<div>...</div>: null}
+        </div>
 
+        <div id = 'showButtons'>
+            <div id ='changeNoteButton' onClick = {()=>{props.openNode(x)}}>
+              🖋️
+            </div>
+            <DeleteNote id = {x.id} deleteNode = {props.deleteNode}/>
+        </div>
+     </div>
 
+ )}
+
+    <div id ='item' onClick = {()=>{props.openNode()}}>
+      <div id = 'itemAddWraper'>
+        +
+      </div>
+    </div>
 </div>
 
-  {props.mockData.map((x,index)=><div id = 'item' key = {index} style = {{margin: '20px',backgroundColor:'aqua', width: '150px', height: '100px'}} ><div>{x.name}</div><div>{x.todoList.map((x,index)=><div key = {index}>{x[2] ? '✅' : '⬜' }{x[1]}</div>)}</div>
-
-<div id = 'showButtons'>
-<div id ='add' style = {{backgroundColor: 'red'}} onClick = {()=>{props.openNode(x)}}>Change</div>
-<DeleteNote id = {x.id} deleteNode = {props.deleteNode}/>
-</div>
-
-
-
- </div>)}
 </div>
 
     </div>

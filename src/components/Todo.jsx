@@ -45,18 +45,13 @@ const Todo = (props) => {
 <div>
 
 
-{/* <input type="checkbox" value="on" checked = {todoBox || false} onChange = { (e) => { console.log(e.target.value); setTodoBox(!todoBox);  } } /> */}
+<div id = 'singleNote'>
 
+<div id = 'checkbox' onClick = {onCheckBox}>{props.todo[2] ? '✅' : '⬜' }</div>
 
-<div style ={{display: 'flex'}}>
-
-<div style = {{cursor: 'pointer'}} onClick = {onCheckBox}>{props.todo[2] ? '✅' : '⬜' }</div>
-
-
-<div>
+<div id = 'textSection'>
 {toggleChangeTodo?<form onSubmit = {onFormSubmit} >
 
-{/* <input type="checkbox" id="c1" value="on" name="cb1" checked = {todoBox || false} onChange = { (e) => { console.log(e.target.value); setTodoBox(!todoBox)  } } /> */}
 
 <input type = 'text' value = {todoName || ''} onChange = { (e) => { console.log(e.target.value); setTodoName(e.target.value)  } } />
 
@@ -69,11 +64,6 @@ const Todo = (props) => {
 
 </div>
 
-
-
-
-<br/>
-<br/>
 </div>
 
   )

@@ -3,7 +3,7 @@ import Confirmation from './Confirmation'
 
 const DeleteNote = (props) => {
 
-  return (<Confirmation action = { ()=>{props.deleteNode(props.id)} } name = {'Delete Note'}/>)
+  return (<Confirmation action = { ()=>{props.deleteNode(props.id)} } name = {'deleteNote'} text = {'❌'}/>)
 
 }
 

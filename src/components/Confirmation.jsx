@@ -10,7 +10,9 @@ const Confirmation = (props) => {
     return (
       <div>
         <div>Please confirm the action</div>
-        <button onClick = {()=>{ props.action(); setToggle(0) }}>Confirm</button>
+        <button onClick = {()=>{ props.action(); setToggle(0) }}>
+          Confirm
+        </button>
         <button onClick = {()=>{setToggle(0)}}>Cancel</button>
       </div>
     )
@@ -22,7 +24,7 @@ const Confirmation = (props) => {
   return (
 
     <div>
-    <button onClick = {()=>{ setToggle(1)}}>{props.name}</button>
+    <div id = {props.name} onClick = {()=>{ setToggle(1)}}>{props.text?props.text:props.name}</div>
     {toggle?form():<div></div>}
     </div>
   )

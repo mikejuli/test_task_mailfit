@@ -110,7 +110,7 @@ function App() {
 
     setPage('list');
 
-    setNote(0);
+    setNote(0);  // optional
 
   }
 
@@ -140,7 +140,7 @@ function App() {
 
     {currentPage==='list'?
     <div>
-    <button id ='add' onClick = {()=>{openNode()}}>+ Add</button>
+
     <List mockData = {mockData}
           openNode = {openNode}
           deleteNode = {deleteNode}

@@ -46,15 +46,27 @@ const Note = (props) => {
 
   return (
 
-  <div style = {{position: 'relative', left: '40%', width: '400px', lenght: '200px', backgroundColor: 'grey'}}>
-    <NoteName note ={noteData} modifyNote = {modifyNote}/>
-    <br/>
-    <UndoRedo historyOfChanges = {historyOfChanges} setNoteFromHistory = {setNoteFromHistory}/>
-    <TodoList note = {noteData} changeNode = {props.changeNode} modifyNote = {modifyNote}/>
-    <button id = 'save' onClick = {safe}>Save</button>
-    <UndoEdit modifyNote = {modifyNote} requestInitialNote = {props.requestInitialNote}/>
-    <button id = 'back' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
-    <DeleteNote id = {props.note.id} deleteNode = {props.deleteNode}/>
+  <div id = 'note'>
+    <div id = 'innerNote'>
+
+        <div id = 'noteNameSection'>
+          <NoteName note ={noteData} modifyNote = {modifyNote}/>
+        </div>
+
+        <div id = 'noteTodoListSection'>
+          <TodoList note = {noteData} changeNode = {props.changeNode} modifyNote = {modifyNote}/>
+        </div>
+
+
+        <div id = 'noteButtonSection'>
+          <button id = 'save' onClick = {safe}>Save</button>
+          <button id = 'back' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
+          <UndoRedo historyOfChanges = {historyOfChanges} setNoteFromHistory = {setNoteFromHistory}/>
+          <UndoEdit modifyNote = {modifyNote} requestInitialNote = {props.requestInitialNote}/>
+          <DeleteNote id = {props.note.id} deleteNode = {props.deleteNode}/>
+        </div>
+
+    </div>
   </div>
 
 

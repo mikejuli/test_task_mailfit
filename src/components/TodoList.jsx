@@ -5,16 +5,6 @@ import {v4} from 'uuid';
 const TodoList = (props) => {
 
   const [currentNote, setCurrentNote] = useState( () => { let x = JSON.parse(JSON.stringify(props.note)) ;return x || [];} )
-  // const [todoList, setTodoList] = useState((x)=>{ props.note.todoList != undefined ?  x = [props.note.todoList] :  x = []})
-
-  // useEffect(() => {
-
-
-  //   console.log(currentNote.todoList)
-  // setTodoList(currentNote.todoList)
-
-  // },[currentNote])
-
 
 
   useEffect(() => {
@@ -72,21 +62,17 @@ const addTodo = (todoName) => {
 
   }
 
-const undo = () => {
 
-
-
-}
 
 
   return (
 
     <div>
-      From todo list
+
 
     <div>{currentNote.todoList?currentNote.todoList.map(x=><Todo key = {x[0]} todo = {x} changeTodoList = {changeTodoList} deleteTodo = {deleteTodo}/>) : <div></div> }</div>
 
-    <button onClick = {()=>{addTodo('new todo')}}>+ Todo</button>
+    <button id = 'newTodo' onClick = {()=>{addTodo('New todo')}}>+</button>
 
     </div>
   )

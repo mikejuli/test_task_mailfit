@@ -1,12 +1,245 @@
+
 .App {
   text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  height: 100vh;
+  background-color: rgb(190 231 225);
 }
+
+
+
+#toDoList {
+
+  width: 100%;
+  height: auto
+}
+
+#title {
+  font-size: x-large;
+  color: rgb(94 159 150);
+  padding: 10px;
+  cursor: default;
+}
+
+#listItems {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: center;
+
+  background-color: rgb(190 231 225);
+}
+
+#item {
+  cursor: default;
+  background-color: rgb(254 254 254);
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+#item:nth-child(1n) {
+  page-break-after: always;
+  break-after: always;
+
+}
+
+#itemAddWraper{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(117 192 187);
+  color: white;
+  font-Size: 150px;
+  cursor: pointer;
+  transition: 0.2s;
+
+}
+#itemAddWraper:hover {
+  transition: 0.2s;
+  transform: scale(1.02)
+}
+
+#itemNameWrap {
+
+  width: 100%;
+  height: 20%;
+  color: aliceblue;
+  font-size: large;
+  background-color: rgb(116 191 186);
+  line-height: 200%;
+
+
+}
+
+#itemName {
+  margin: 0px 5px 0px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#todoNote{
+  color: rgb(122 107 97);
+  width: 100%;
+  height: 55%;
+}
+
+#todoSingeNote {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+  width: 90%;
+}
+
+#todoSingeNoteItem {
+
+  margin-left: 10px;
+
+}
+
+#changeNoteButton {
+
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: rgb(255 218 126);
+  text-align: center;
+  line-height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+#changeNoteButton:hover {
+  transition: 0.1s;
+  transform: scale(1.1)
+}
+
+#deleteNote {
+
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: rgb(255 148 142);
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+#deleteNote:hover {
+  transition: 0.1s;
+  transform: scale(1.1)
+}
+
+button {
+  font-size: large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 
 
 #showButtons {
+
   display: none;
+
+
 }
 
 #item:hover  #showButtons {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#note {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: rgb(122 107 97);
+}
+
+#innerNote {
+
+  width: 400px;
+  margin: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#noteNameSection {
+
+  background-color:  rgb(94 159 150);
+  color: white;
+  padding: 10px 0px 10px 0px;
+  font-size: 30px
+}
+
+
+
+#noteTodoListSection {
+
+  background-color: white
+
+
+}
+
+
+#noteButtonSection {
+
+
+  background-color: rgb(190 231 225);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+#singleNote {
+
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  background-color: rgb(251 251 251)
+}
+
+#checkbox {
+  margin: 0px 10px 0px 15px;
+  cursor: pointer
+
+}
+
+#textSection {
+
+  line-height: 200%;
+}
+
+#newTodo {
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: rgb(79 149 140);
+  color: white;
+  font-size: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+  float: left;
+  margin: 5px 5px 5px 5px;
+}
+
+#newTodo:hover {
+  transition: 0.2s;
+  transform: scale(1.1)
 }
