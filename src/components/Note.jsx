@@ -1,16 +1,21 @@
 import {useState, useEffect} from 'react'
 import TodoList from './TodoList'
-
+import NoteName from './NoteName'
+import DeleteNote from './DeleteNote'
+import UndoEdit from './UndoEdit'
+import UndoRedo from './UndoRedo'
 const Note = (props) => {
 
  const [noteData, setNoteData] = useState(props.note);
- const [nameValue, setNameValue] = useState(props.note.name)
 
- const [toggleNameValue, setToggleNameValue] = useState(true)
+ const [historyOfChanges, addAction] = useState([props.note])
+ //const [nameValue, setNameValue] = useState(props.note.name)
 
-  useEffect(()=>{ setNoteData(props.note)  },[props.note])
+
+
+  useEffect(()=>{ setNoteData(props.note)},[props.note])
   useEffect(()=>{ setNoteData(noteData)  },[noteData])
-
+ // useEffect(()=>{addAction([props.note])},[props.note])
  // useEffect(()=>{setNameValue(props.note.name)},[props.note.name])
  // useEffect(()=>{setNameValue(props.note.name)},[props.note.name])
 
@@ -22,47 +27,35 @@ const Note = (props) => {
 
   }
 
-  const modifyTodoList = (note) => {
+  const modifyNote = (note) => {
 
     setNoteData(note)
     console.log(note)
+
+    addAction([...historyOfChanges,note])
+
   }
 
-  const onFormSubmit = (e) => {
+  const setNoteFromHistory = (note) => {
 
-    console.log(e.target[0].value);
-    setNoteData(
-      {id: props.note.id, name: `${e.target[0].value}`, todoList: props.note.todoList})
+    setNoteData(note);
 
-      e.preventDefault();
-
-      setToggleNameValue(!toggleNameValue)
   }
+
 
 
   return (
-    <div style = {{position: 'relative', left: '40%', width: '400px', lenght: '200px', backgroundColor: 'grey'}}>
 
-    From Note
-  {toggleNameValue? <div style = {{fontSize: '30px'}}>{nameValue}<button onClick={()=>{ setToggleNameValue(!toggleNameValue)}}>✍️</button></div> :
-
-  <form onSubmit = {onFormSubmit} >
-<input type = 'text' value = {nameValue} onChange = { (e) => { console.log(e.target.value); setNameValue(e.target.value)  } } />
-
-<button type = 'submit'>✍️</button>
-</form>}
-
-{/* <form onSubmit = {onFormSubmit} >
-<input type = 'text' value = {nameValue} onChange = { (e) => { console.log(e.target.value); setNameValue(e.target.value)  } } />
-
-<button type = 'submit'>✍️</button>
-</form> */}
-<br/>
-<TodoList note = {noteData} changeNode = {props.changeNode} modifyTodoList = {modifyTodoList}/>
-<button id = 'save' onClick = {safe}>Save</button>
-<button id = 'back' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
-
-    </div>
+  <div style = {{position: 'relative', left: '40%', width: '400px', lenght: '200px', backgroundColor: 'grey'}}>
+    <NoteName note ={noteData} modifyNote = {modifyNote}/>
+    <br/>
+    <UndoRedo historyOfChanges = {historyOfChanges} setNoteFromHistory = {setNoteFromHistory}/>
+    <TodoList note = {noteData} changeNode = {props.changeNode} modifyNote = {modifyNote}/>
+    <button id = 'save' onClick = {safe}>Save</button>
+    <UndoEdit modifyNote = {modifyNote} requestInitialNote = {props.requestInitialNote}/>
+    <button id = 'back' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
+    <DeleteNote id = {props.note.id} deleteNode = {props.deleteNode}/>
+  </div>
 
 
 

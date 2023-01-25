@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import DeleteNote from './DeleteNote'
 
 const List = (props) => {
 
@@ -20,7 +21,7 @@ const List = (props) => {
 
 <div id = 'showButtons'>
 <div id ='add' style = {{backgroundColor: 'red'}} onClick = {()=>{props.openNode(x)}}>Change</div>
-<button id ='delete'onClick = {()=>{props.deleteNode(x.id)}}>Delete</button>
+<DeleteNote id = {x.id} deleteNode = {props.deleteNode}/>
 </div>
 
 

@@ -47,6 +47,11 @@ function App() {
      localStorage.setItem('list', JSON.stringify([...mockData]))
 
   }
+
+
+    setNote(0);
+    setPage('list')
+
     console.log(s, mockData)
 
   }
@@ -75,6 +80,11 @@ function App() {
      localStorage.setItem('list', JSON.stringify([...s]))
 
   }
+
+      //to make sure that right after saving we won't be able to undo
+      setNote(updatedNode);
+
+
     }
 
   }
@@ -100,8 +110,16 @@ function App() {
 
     setPage('list');
 
+    setNote(0);
+
   }
 
+
+  function requestInitialNote() {
+
+    return note
+
+  }
 
 
   useEffect(()=>{
@@ -133,6 +151,8 @@ function App() {
     <Note note = {note}
           backToTheList = {backToTheList}
           changeNode = {changeNode}
+          deleteNode = {deleteNode}
+          requestInitialNote = {requestInitialNote}
 
 
     />

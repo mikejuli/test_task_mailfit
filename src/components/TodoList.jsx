@@ -41,7 +41,7 @@ const TodoList = (props) => {
     setCurrentNote(JSON.parse(JSON.stringify(currentNote)))
 
     console.log(currentNote, props.note)
-    props.modifyTodoList(currentNote);
+    props.modifyNote(currentNote);
 
   }
 
@@ -54,7 +54,7 @@ const TodoList = (props) => {
     console.log(deleteIndex)
     currentNote.todoList.splice(deleteIndex, 1)
     setCurrentNote(JSON.parse(JSON.stringify(currentNote)));
-    props.modifyTodoList(currentNote);
+    props.modifyNote(currentNote);
 
   }
 
@@ -68,7 +68,7 @@ const addTodo = (todoName) => {
     setCurrentNote(JSON.parse(JSON.stringify(currentNote)));
 
     console.log(currentNote);
-    props.modifyTodoList(currentNote);
+    props.modifyNote(currentNote);
 
   }
 
@@ -87,8 +87,7 @@ const undo = () => {
     <div>{currentNote.todoList?currentNote.todoList.map(x=><Todo key = {x[0]} todo = {x} changeTodoList = {changeTodoList} deleteTodo = {deleteTodo}/>) : <div></div> }</div>
 
     <button onClick = {()=>{addTodo('new todo')}}>+ Todo</button>
-    <button onClick = {()=>{undo()}}>Undo Edit</button>
-    <button onClick = {()=>{undo()}}>Undo ↩</button>
+
     </div>
   )
 
