@@ -3,17 +3,23 @@ import {useState, useEffect} from 'react'
 const Confirmation = (props) => {
 
 
-  const [toggle, setToggle] = useState(0)
+  const [toggle, setToggle] = useState(props.isOpen)
+
+  useEffect(()=>{setToggle(props.isOpen)},[props.isOpen])
+
 
   const form = () => {
 
+
     return (
-      <div>
-        <div>Please confirm the action</div>
-        <button onClick = {()=>{ props.action(); setToggle(0) }}>
+      <div id = "confirmation">
+        <div id = 'inConfirmation'>
+        <div>Please confirm the action {props.title}</div>
+        <button onClick = {()=>{ props.onClose()}}>
           Confirm
         </button>
-        <button onClick = {()=>{setToggle(0)}}>Cancel</button>
+        <button onClick = {()=>{props.onConfirm()}}>Cancel</button>
+        </div>
       </div>
     )
 
@@ -24,8 +30,9 @@ const Confirmation = (props) => {
   return (
 
     <div>
-    <div id = {props.name} onClick = {()=>{ setToggle(1)}}>{props.text?props.text:props.name}</div>
+    <div id = {props.name} onClick = {()=>{ setToggle(1); console.log('hee')}}>{props.text}</div>
     {toggle?form():<div></div>}
+
     </div>
   )
 

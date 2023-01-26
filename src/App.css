@@ -116,8 +116,9 @@
 }
 
 #changeNoteButton:hover {
-  transition: 0.1s;
-  transform: scale(1.1)
+  transition: 0.2s;
+  transform: scale(1.1);
+  background-color: rgb(251 199 70)
 }
 
 #deleteNote {
@@ -135,7 +136,8 @@
 
 #deleteNote:hover {
   transition: 0.1s;
-  transform: scale(1.1)
+  transform: scale(1.1);
+  background-color: rgb(255 107 99)
 }
 
 button {
@@ -202,7 +204,7 @@ button {
   align-content: center;
   justify-content: center;
   flex-direction: row;
-
+  margin: 5px;
 }
 
 #singleNote {
@@ -236,10 +238,40 @@ button {
   cursor: pointer;
   transition: 0.2s;
   float: left;
-  margin: 5px 5px 5px 5px;
+  margin: 10px 10px 10px 10px;
 }
 
 #newTodo:hover {
   transition: 0.2s;
   transform: scale(1.1)
+}
+
+#confirmation {
+
+  width: 100%;
+  height: 100%;
+background-color: rgba(0, 0, 0, 0.6);
+
+display: visible;
+position: absolute;
+z-index: 1;
+display: flex;
+  flex-flow:  column;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+#inConfirmation {
+
+  background-color: white;
+  width: 260px;
+  height: 200px;
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: center;
+
 }

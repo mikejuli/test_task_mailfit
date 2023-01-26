@@ -72,7 +72,7 @@ const addTodo = (todoName) => {
 
     <div>{currentNote.todoList?currentNote.todoList.map(x=><Todo key = {x[0]} todo = {x} changeTodoList = {changeTodoList} deleteTodo = {deleteTodo}/>) : <div></div> }</div>
 
-    <button id = 'newTodo' onClick = {()=>{addTodo('New todo')}}>+</button>
+    <button id = 'newTodo' onClick = {()=>{addTodo('New todo')}}><div style ={{marginTop:'-7px'}}>+</div></button>
 
     </div>
   )

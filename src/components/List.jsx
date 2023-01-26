@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react'
 import DeleteNote from './DeleteNote'
+import {useContext} from 'react'
 
 const List = (props) => {
 
-
+  const r = useContext('adsf');
 
   return (
     <div>
@@ -34,6 +35,7 @@ const List = (props) => {
             </div>
             <DeleteNote id = {x.id} deleteNode = {props.deleteNode}/>
         </div>
+
      </div>
 
  )}

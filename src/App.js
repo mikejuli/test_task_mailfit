@@ -3,7 +3,11 @@ import {useState, useEffect} from 'react';
 import {v4} from 'uuid';
 import Note from './components/Note'
 import List from './components/List'
+import Confirmation from './components/Confirmation'
+import {ConfirmProvider} from './components/ConfirmContext'
+
 function App() {
+
 
   //mock data
 
@@ -136,33 +140,35 @@ function App() {
 
     {console.log('was rendered')}
 
+<ConfirmProvider>
+
 
 
     {currentPage==='list'?
-    <div>
+
 
     <List mockData = {mockData}
           openNode = {openNode}
           deleteNode = {deleteNode}
     />
-    </div>
-       :
+
+    :
 
     <Note note = {note}
-          backToTheList = {backToTheList}
-          changeNode = {changeNode}
-          deleteNode = {deleteNode}
-          requestInitialNote = {requestInitialNote}
+    backToTheList = {backToTheList}
+    changeNode = {changeNode}
+    deleteNode = {deleteNode}
+    requestInitialNote = {requestInitialNote}
 
 
     />
 
   }
-
-
+  </ConfirmProvider>
 
     </div>
   );
 }
+
 
 export default App;

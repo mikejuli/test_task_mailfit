@@ -1,11 +1,29 @@
 import {useState, useEffect} from 'react'
 import Confirmation from './Confirmation'
+import {useContext} from 'react'
+import ConfirmContext from './ConfirmContext'
+import useConfirm from './ConfirmContext'
+
 
 const DeleteNote = (props) => {
 
-  return (<Confirmation action = { ()=>{props.deleteNode(props.id)} } name = {'deleteNote'} text = {'❌'}/>)
+  const confirm = useConfirm()
+
+ const handleDelete = async () => {
+    const choice = await confirm({title: 'delete all'})
+  console.log(choice);
+    if(choice){
+
+      console.log(choice,'from delete');
+       props.deleteNode(props.id)
+
+    }
+ }
+
+return <div id = 'deleteNote' onClick = {handleDelete}>❌</div>
 
 }
+
 
 
 export default DeleteNote
