@@ -10,7 +10,7 @@ const DeleteNote = (props) => {
   const confirm = useConfirm()
 
  const handleDelete = async () => {
-    const choice = await confirm({title: 'delete all'})
+    const choice = await confirm({title: 'Delete current note?'})
   console.log(choice);
     if(choice){
 

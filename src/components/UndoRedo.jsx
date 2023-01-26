@@ -36,9 +36,9 @@ const UndoRedo = (props) => {
 
   return (
 
-    <div>
-    <button onClick = {undo}>↩Undo</button>
-    <button onClick = {redo}>↪Redo</button>
+    <div id = 'undoredo'>
+    <button className = 'buttonInButtonSection' onClick = {undo}>↩</button>
+    <button className = 'buttonInButtonSection' onClick = {redo}>↪</button>
 
     </div>
 

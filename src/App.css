@@ -123,8 +123,8 @@
 
 #deleteNote {
 
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 2px;
   background-color: rgb(255 148 142);
   text-align: center;
@@ -132,6 +132,17 @@
   margin-right: 10px;
   cursor: pointer;
   transition: 0.1s;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#showButtons #deleteNote {
+
+  width: 40px;
+  height: 40px;
 }
 
 #deleteNote:hover {
@@ -151,7 +162,8 @@ button {
 
   display: none;
 
-
+  display: flex;
+  justify-content: space-between;
 }
 
 #item:hover  #showButtons {
@@ -159,6 +171,8 @@ button {
   justify-content: space-between;
 
 }
+
+
 
 #note {
   width: 100%;
@@ -198,13 +212,34 @@ button {
 
 #noteButtonSection {
 
-
   background-color: rgb(190 231 225);
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
-  margin: 5px;
+  margin: 10px;
+
+}
+
+.buttonInButtonSection {
+
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: rgb(255 218 126);;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+
+}
+
+.buttonInButtonSection:hover {
+  background-color: rgb(251 199 70);
+  transform: scale(1.05);
 }
 
 #singleNote {
@@ -273,5 +308,52 @@ display: flex;
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: center;
+
+}
+
+#buttonsInConfirmation {
+
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  height: 30%;
+  width: 100%;
+}
+
+#confirmConfirmation {
+
+  display: flex;
+  border: none;
+  background-color: rgb(190 231 225);
+  color: white;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  cursor: pointer;
+  justify-content: space-around;
+}
+
+#confirmConfirmation:hover{
+
+  background-color: rgb(70 203 183)
+
+}
+
+#titleInConfirmation {
+
+  height: 20%;
+  width: 100%;
+  background-color: rgb(117 192 187);
+  color: white;
+  justify-content: space-around;
+  align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#undoredo {
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
 
 }

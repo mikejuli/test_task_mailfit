@@ -14,11 +14,14 @@ const Confirmation = (props) => {
     return (
       <div id = "confirmation">
         <div id = 'inConfirmation'>
-        <div>Please confirm the action {props.title}</div>
-        <button onClick = {()=>{ props.onClose()}}>
-          Confirm
+        <div id = 'titleInConfirmation'>Please confirm the action </div>{props.title}
+        <div id = 'buttonsInConfirmation'>
+
+          <button id = 'confirmConfirmation' onClick = {()=>{ props.onClose()}}>
+          ✔
         </button>
-        <button onClick = {()=>{props.onConfirm()}}>Cancel</button>
+        <button id = 'confirmConfirmation' onClick = {()=>{props.onConfirm()}}>✖</button>
+        </div>
         </div>
       </div>
     )

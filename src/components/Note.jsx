@@ -59,11 +59,12 @@ const Note = (props) => {
 
 
         <div id = 'noteButtonSection'>
-          <button id = 'save' onClick = {safe}>Save</button>
-          <button id = 'back' onClick = {()=>{ props.backToTheList() }}>Back to the list</button>
+          <button className = 'buttonInButtonSection' id = 'save' onClick = {safe}>💾</button>
+          <button className = 'buttonInButtonSection' id = 'back' onClick = {()=>{ props.backToTheList() }}>⬆</button>
           <UndoRedo historyOfChanges = {historyOfChanges} setNoteFromHistory = {setNoteFromHistory}/>
           <UndoEdit modifyNote = {modifyNote} requestInitialNote = {props.requestInitialNote}/>
           <DeleteNote id = {props.note.id} deleteNode = {props.deleteNode}/>
+
         </div>
 
     </div>
